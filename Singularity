@@ -6,3 +6,5 @@ mkdir -p ${SINGULARITY_ROOTFS}/work
 cp Gemfile ${SINGULARITY_ROOTFS}/work/Gemfile
 %post
 apk add --update alpine-sdk
+cd /work
+bundle install
