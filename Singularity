@@ -1,5 +1,5 @@
 bootstrap:docker
-From:ruby/2.4-alpine
+From:ruby:2.4-alpine
 
 %setup 
 mkdir -p ${SINGULARITY_ROOTFS}/work
