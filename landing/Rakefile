@@ -1,0 +1,37 @@
+require "rubygems"
+require 'rake'
+require 'yaml'
+require 'time'
+require 'bundler/setup'
+
+
+SOURCE = "."
+CONFIG = {
+  'version' => "0.3.0",
+  'themes' => File.join(SOURCE, "_includes", "themes"),
+  'layouts' => File.join(SOURCE, "_layouts"),
+  'posts' => File.join(SOURCE, "_posts"),
+  'post_ext' => "md",
+  'theme_package_version' => "0.1.0"
+}
+
+
+# build and deploy
+
+CONFIG_FILE = "_config.yml"
+BASE_CONFIG_FILE = "_base_config.yml"
+
+
+task :setup do |t,args|
+  valid_opts={'local'=>'local_base_path','remote'=>'deploy_base_path'}
+  location = ARGV.last unless ARGV.length<2
+  task location.to_sym do;end
+  location=valid_opts[location]
+  config=YAML.load_file(BASE_CONFIG_FILE)
+  config["BASE_PATH"]=config[location]
+  puts location
+  puts "BASE_PATH set  to #{config["BASE_PATH"]}"
+  config["ASSET_PATH"]=File.join(config["BASE_PATH"],"assets")
+  config=config.to_yaml
+  IO.write "_config.yml" ,"#DO NOT MODIFY THIS FILE DIRECTLY MODIFY #{BASE_CONFIG_FILE} instead\n" + config[3..config.length]
+end
