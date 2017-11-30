@@ -48,6 +48,24 @@ cp landing/_base_config.yml /work
 cd /work
 echo $(ls)
 rake setup local
+jekyll build
 echo 'deployed'
 cp -r _site $BACK/_site
 jekyll serve -H 0.0.0.0
+
+%apprun remote
+BACK=$PWD
+export BACK
+echo $BACK
+cp landing/*.md /work
+cp -r landing/pages/ /work/pages/
+cp -r landing/assets/ /work/assets/
+cp landing/_base_config.yml /work
+cd /work
+echo $(ls)
+rake setup remote
+jekyll build
+echo 'deployed'
+cp -r _site $BACK/_site
+
+
