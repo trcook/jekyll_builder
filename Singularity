@@ -13,8 +13,8 @@ landing/Rakefile /work
 landing/_layouts /work
 landing/_includes /work
 landing/robots.txt /work
-landing/_base_config.yml /work
 landing/assets /work
+landing/_base_config.yml /work
 
 %post
 export GEM_HOME=/usr/local/bundle
