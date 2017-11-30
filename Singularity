@@ -28,20 +28,13 @@ apk add --update alpine-sdk
 cd /work
 adduser -D alpine
 
-
-
+# these lines ensures that ruby runs properly for user
 chmod -R ugo+rwx /work
 chmod -R ugo+rwx /usr/local
 chown -R alpine /work
 chgrp -R alpine /work
-#chown -R alpine /usr/local
-#chgrp -R alpine /usr/local
-#printenv>>pre_lock
 
 bundle install
-
-#su -c 'bundle install --system' 
-
 
 
 %runscript
